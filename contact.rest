@@ -1,0 +1,43 @@
+### 🔍 Get all contacts
+GET http://localhost:8080/api/contacts
+
+### 🔍 Get contact by ID — Happiness Igo
+GET http://localhost:8080/api/contacts/68b7913dceb13f53e6d44fb8
+
+### 🔍 Get contact by ID — David Panshank
+GET http://localhost:8080/api/contacts/68b7913dceb13f53e6d44fba
+
+### 🔍 Get contact by ID — James Ford
+GET http://localhost:8080/api/contacts/68b7913dceb13f53e6d44fb9
+
+### 🆕 Create a new contact
+POST http://localhost:8080/api/contacts
+Content-Type: application/json
+
+{
+  "firstName": "Nelson",
+  "lastName": "Obi",
+  "email": "nelsonobi@gmail.com",
+  "favoriteColor": "White",
+  "birthday": "2001-10-10"
+  
+}
+
+### ✏️ Update contact — James Ford
+PUT http://localhost:8080/api/contacts/68b7913dceb13f53e6d44fb9
+Content-Type: application/json
+
+{
+  "firstName": "James",
+  "lastName": "Ford",
+  "email": "jamesbondvip1985@gmail.com",
+  "favoriteColor": "Black",
+  "birthday": "1985-12-16"
+}
+
+### ❌ Delete contact — Happiness Igo
+DELETE http://localhost:8080/api/contacts/68c3084ee8b85253519d270b
+
+
+
+
