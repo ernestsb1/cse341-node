@@ -44,22 +44,7 @@ mongoose.connect(process.env.MONGODB_URI)
         console.error('❌ MongoDB connection error:', err);
     });
 
-const swaggerOptions = {
-  swaggerDefinition: {
-    openapi: '3.0.0',
-    info: {
-      title: 'Contacts API',
-      version: '1.0.0',
-      description: 'A simple API to manage contacts',
-    },
-    servers: [
-      {
-        url: 'https://cse341-node-ob82.onrender.com', // ✅ Replace with Render URL when deployed
-      }
-    ],
-  },
-  apis: ['./routes/*.js'], // 👈 where to look for @swagger comments
-};
+
     
 // 404 fallback
 app.use((req, res, next) => {

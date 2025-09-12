@@ -5,9 +5,9 @@
     "description": "Contacts and Temples API",
     "version": "1.0.0"
   },
-  "host": "localhost:8080",
+  "host": "cse341-node-ob82.onrender.com",
   "basePath": "/",
-  "schemes": ["http"],
+  "schemes": ["https"],
   "paths": {
     "/api/contacts": {
       "get": {
