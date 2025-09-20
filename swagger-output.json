@@ -6,10 +6,8 @@
     "version": "1.0.0"
   },
   "host": "cse341-node-ob82.onrender.com",
-  "basePath": "/api",
-  "schemes": [
-    "https"
-  ],
+  "basePath": "/",
+  "schemes": ["https"],
   "tags": [
     {
       "name": "Contacts",
