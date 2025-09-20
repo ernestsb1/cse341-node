@@ -6,7 +6,7 @@ const doc = {
     description: 'API for managing contacts, temples, and books for CSE341.',
     version: '1.0.0',
   },
-  host: 'cse341-node-ob82.onrender.com/api-docs',
+  host: 'cse341-node-ob82.onrender.com',
   schemes: ['https'],
   basePath: '/',
   tags: [
