@@ -41,3 +41,39 @@ DELETE http://localhost:8080/api/contacts/68c3084ee8b85253519d270b
 
 
 
+### Get all books
+GET http://localhost:8080/api/books
+
+### Get a book by ID
+GET http://localhost:8080/api/books/68cd7a61be99ede07597fefa
+
+### Create a new book
+POST http://localhost:8080/api/books
+Content-Type: application/json
+
+{
+  "title": "Whispers in the Wind",
+  "author": "Naomi Park",
+  "genre": "Drama",
+  "publishedYear": 1987,
+  "pages": 213,
+  "rating": 3.9,
+  "available": true
+}
+
+### Update a book
+PUT http://localhost:8080/api/books/68cdb73b3c5d54e81f9d972c
+Content-Type: application/json
+
+{
+  "title": "Updated Title",
+  "author": "Updated Author",
+  "genre": "Drama",
+  "publishedYear": 1990,
+  "pages": 300,
+  "rating": 4.5,
+  "available": false
+}
+
+### Delete a book
+DELETE http://localhost:8080/api/books/68cdb73b3c5d54e81f9d972c

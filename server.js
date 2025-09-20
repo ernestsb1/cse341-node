@@ -6,6 +6,7 @@ const path = require('path');
 
 const contactRouter = require('./routes/contactRoutes');
 const templeRouter = require('./routes/templeRoutes');
+const bookRoutes = require('./routes/bookRoutes');
 
 const swaggerUi = require('swagger-ui-express');
 const swaggerFile = require('./swagger-output.json');
@@ -15,6 +16,7 @@ const swaggerFile = require('./swagger-output.json');
 const app = express();
 const PORT = process.env.PORT || 8080;
 
+app.use(express.urlencoded({ extended: true })); // optional
 app.set('json spaces', 2);
 
 
@@ -29,6 +31,9 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 app.use('/api/temples', templeRouter); // ✅
 // API route
 app.use('/api/contacts', contactRouter);
+
+app.use('/api/books', bookRoutes);
+
 
 // Connect to MongoDB and then start server
 mongoose.connect(process.env.MONGODB_URI)
