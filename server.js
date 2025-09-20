@@ -6,7 +6,7 @@ const path = require('path');
 
 const contactRouter = require('./routes/contactRoutes');
 const templeRouter = require('./routes/templeRoutes');
-const bookRoutes = require('./routes/bookRoutes');
+const bookRouter = require('./routes/bookRoutes');
 
 const swaggerUi = require('swagger-ui-express');
 const swaggerFile = require('./swagger-output.json');
@@ -32,7 +32,7 @@ app.use('/api/temples', templeRouter); // ✅
 // API route
 app.use('/api/contacts', contactRouter);
 
-app.use('/api/books', bookRoutes);
+app.use('/api/books', bookRouter);
 
 
 // Connect to MongoDB and then start server
