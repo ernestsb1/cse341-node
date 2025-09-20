@@ -6,8 +6,7 @@
     "version": "1.0.0"
   },
   "host": "cse341-node-ob82.onrender.com",
-  "basePath": "/api",
-  "schemes": ["https"],
+"basePath": "/api",
   "tags": [
     {
       "name": "Contacts",
@@ -22,7 +21,8 @@
       "description": "Endpoints related to books"
     }
   ],
-  
+  "schemes":
+   [ "https" ],
   "paths": {
     "/contacts": {
       "get": {
