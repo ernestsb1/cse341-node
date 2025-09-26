@@ -48,7 +48,7 @@ app.use(passport.session());
 //allow passport to use express-session
 // Allow CORS
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080'); // match CORS
+  res.setHeader('Access-Control-Allow-Origin', 'https://cse341-node-ob82.onrender.com'); // match CORS
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, z-Key, Authorization');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
@@ -58,7 +58,7 @@ app.use((req, res, next) => {
 
 // Optionally, use cors middleware (with full options)
 app.use(cors({
-  origin: 'http://localhost:8080', // or the specific domain of your Swagger UI or frontend
+  origin: 'https://cse341-node-ob82.onrender.com', // or the specific domain of your Swagger UI or frontend
   methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT'],
   credentials: true
 }));
