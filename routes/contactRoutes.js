@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Contact = require('../models/contactModel');
 const mongoose = require('mongoose');
+const { isAuthenticated } = require('../middleware/authenticate'); 
 
 
 // GET all contacts
@@ -31,7 +32,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // POST: Create new contact
-router.post('/', async (req, res) => {
+router.post('/', isAuthenticated, async (req, res) => {
   const { firstName, lastName, email, favoriteColor, birthday } = req.body;
 
   if (!firstName || !lastName || !email || !favoriteColor || !birthday) {
@@ -57,7 +58,7 @@ router.post('/', async (req, res) => {
 
 
 // PUT: Replace entire contact by ID
-router.put('/:id', async (req, res) => {
+router.put('/:id', isAuthenticated, async (req, res) => {
   const { id } = req.params;
 
   if (!mongoose.isValidObjectId(id)) {
@@ -95,7 +96,7 @@ router.put('/:id', async (req, res) => {
 
 
 // DELETE contact by ID
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', isAuthenticated, async (req, res) => {
   const { id } = req.params;
 
   if (!mongoose.isValidObjectId(id)) {

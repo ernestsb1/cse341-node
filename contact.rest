@@ -74,6 +74,23 @@ Content-Type: application/json
   "rating": 4.5,
   "available": false
 }
+###
+PUT http://localhost:8080/api/books/68cd7a61be99ede07597ff00
+Accept: application/json
+Content-Type: application/json
+Cookie: connect.sid=s%3A4LSPW9UEKn5D2VHhYQq-7t2fdOB3CHcM.kwo3OFjZjb%2BgX5mVj9mra%2BiVqFJAw0ffUPcdk912Wsk
+
+{
+  "title": "The Last Cartographer",
+  "author": "Aiden Clarke",
+  "genre": "Adventure",
+  "publishedYear": 1990,
+  "pages": 398,
+  "rating": 3.8,
+  "available": true
+}
+
+
 
 ### Delete a book
 DELETE http://localhost:8080/api/books/68cdb73b3c5d54e81f9d972c
