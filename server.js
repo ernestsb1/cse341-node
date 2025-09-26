@@ -104,7 +104,7 @@ app.get('/', (req, res) => {
 });
 
 
-app.get('/github/callback', passport.authenticate('github', { failureRedirect: '/' }), (req, res) => {
+app.get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/' }), (req, res) => {
   // This callback only runs on successful auth
   req.session.user = req.user; // store user in session
   res.redirect('https://cse341-node-ob82.onrender.com/api-docs');    // redirect after login
