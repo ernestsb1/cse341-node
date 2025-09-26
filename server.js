@@ -9,6 +9,7 @@ const cookieParser = require('cookie-parser');
 const authenticateRoutes = require('./routes/authenticateRoutes');
 const GitHubStrategy = require('passport-github2').Strategy;
 const { isAuthenticated } = require('./middleware/authenticate');
+const MongoStore = require('connect-mongo');
 require('./auth/passport'); // Passport configuration
 
 
@@ -36,13 +37,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
-  saveUninitialized: true,
-   cookie: {
+  saveUninitialized: false,
+  store: MongoStore.create({
+    mongoUrl: process.env.MONGO_URI,
+  }),
+  cookie: {
     httpOnly: true,
-    maxAge: 24 * 60 * 60 * 1000 // ✅ 1 day session cookie
+    secure: true,        // only send cookie over HTTPS
+    maxAge: 24 * 60 * 60 * 1000 // 1 day
   }
-  
-}))
+}));
+
 app.use(passport.initialize());
 app.use(passport.session());
 //allow passport to use express-session
