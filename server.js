@@ -9,7 +9,6 @@ const cookieParser = require('cookie-parser');
 const authenticateRoutes = require('./routes/authenticateRoutes');
 const GitHubStrategy = require('passport-github2').Strategy;
 const { isAuthenticated } = require('./middleware/authenticate');
-const MongoStore = require('connect-mongo');
 require('./auth/passport'); // Passport configuration
 
 
@@ -39,11 +38,11 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: {
-    httpOnly: true,
-    secure: true,        // only send cookie over HTTPS
-    maxAge: 24 * 60 * 60 * 1000 // 1 day
-  }
-}));
+  httpOnly: true, // ✅ correct spelling
+  secure: process.env.NODE_ENV === 'production', // ✅ only secure in production
+  maxAge: 24 * 60 * 60 * 1000 // 1 day
+}
+}))
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -73,7 +72,7 @@ passport.use(new GitHubStrategy({
   callbackURL: process.env.CALLBACK_URL,
 }, function (accessToken, refreshToken, profile, done) {
   return done(null, profile);
-}))
+}));
 
 
 passport.serializeUser((user, done) => {
@@ -87,7 +86,7 @@ passport.deserializeUser((obj, done) => {
 // Use your routes
 app.use('/auth', authenticateRoutes);
 
-app.get('/auth/github', passport.authenticate('github'));
+app.get('/github', passport.authenticate('github'));
 
 // Auth routes
 
@@ -101,7 +100,7 @@ app.get('/', (req, res) => {
 });
 
 
-app.get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/' }), (req, res) => {
+app.get('/github/callback', passport.authenticate('github', { failureRedirect: '/' }), (req, res) => {
   // This callback only runs on successful auth
   req.session.user = req.user; // store user in session
   res.redirect('https://cse341-node-ob82.onrender.com/api-docs');    // redirect after login
@@ -115,10 +114,7 @@ app.get('/logout', (req, res, next) => {
   });
 });
 
-app.get('/', (req, res) => {
-      console.log('Session user:', req.user);
-  res.send(req.user ? `Logged in as ${req.user.displayName}` : 'Logged out');
-});
+
 
 app.use('/api-docs', (req, res, next) => {
   const protectedMethods = ['POST', 'PUT', 'DELETE'];

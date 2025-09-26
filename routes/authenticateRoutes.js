@@ -6,7 +6,7 @@ const router = express.Router();
 router.get('/github', passport.authenticate('github'));
 
 // GitHub OAuth callback URL (must match what you set in GitHub OAuth app settings)
-router.get('/auth/github/callback',
+router.get('/github/callback',
   passport.authenticate('github', { failureRedirect: '/' }),
   (req, res) => {
     // Successful login
