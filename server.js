@@ -124,7 +124,7 @@ app.use('/api-docs', (req, res, next) => {
   next();
 }, swaggerUi.serve, swaggerUi.setup(swaggerFile, {
   swaggerOptions: {
-    withCredentials: true // ✅ Tell Swagger to send cookies
+    withCredentials: true 
   }
 }));
 // Mount your temple routes at /api/temples
