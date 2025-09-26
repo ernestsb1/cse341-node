@@ -38,9 +38,6 @@ app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
-  store: MongoStore.create({
-    mongoUrl: process.env.MONGO_URI,
-  }),
   cookie: {
     httpOnly: true,
     secure: true,        // only send cookie over HTTPS
@@ -76,7 +73,7 @@ passport.use(new GitHubStrategy({
   callbackURL: process.env.CALLBACK_URL,
 }, function (accessToken, refreshToken, profile, done) {
   return done(null, profile);
-}));
+}))
 
 
 passport.serializeUser((user, done) => {
