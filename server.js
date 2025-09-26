@@ -87,14 +87,9 @@ passport.deserializeUser((obj, done) => {
 // Use your routes
 app.use('/auth', authenticateRoutes);
 
+app.get('/auth/github', passport.authenticate('github'));
+
 // Auth routes
-app.get('/login', (req, res) => {
-  if (req.isAuthenticated()) {
-    res.send(`Logged in as ${req.user.displayName}`);
-  } else {
-    res.send('Logged out');
-  }
-});
 
 app.get('/', (req, res) => {
   console.log('Session user:', req.user);
@@ -109,7 +104,7 @@ app.get('/', (req, res) => {
 app.get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/' }), (req, res) => {
   // This callback only runs on successful auth
   req.session.user = req.user; // store user in session
-  res.redirect('/api-docs');    // redirect after login
+  res.redirect('https://cse341-node-ob82.onrender.com/api-docs');    // redirect after login
 });
 
 

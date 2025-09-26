@@ -6,12 +6,12 @@ const router = express.Router();
 router.get('/github', passport.authenticate('github'));
 
 // GitHub OAuth callback URL (must match what you set in GitHub OAuth app settings)
-router.get('/github/callback', 
+router.get('/auth/github/callback',
   passport.authenticate('github', { failureRedirect: '/' }),
   (req, res) => {
     // Successful login
     // You can redirect wherever you want here
-    res.redirect('/api-docs'); 
+    res.redirect('https://cse341-node-ob82.onrender.com/api-docs'); 
   }
 );
 
